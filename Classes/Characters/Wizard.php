@@ -8,7 +8,7 @@ class Wizard extends MagicalCharacter
 {
     public function __construct()
     {
-        parent::__construct(health: 28, defense: 56, physicalDamages: 5, magicalDamages: 11);
+        parent::__construct(health: 28, defense: 56, element: "none", physicalDamages: 5, magicalDamages: 11);
     }
 
     public function getMagicalDamages(): float

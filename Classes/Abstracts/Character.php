@@ -7,6 +7,7 @@ abstract class Character
     public function __construct(
         private float $health = 29,
         private float $defense = 60,
+        private string $element,
         protected float $physicalDamages = 9,
         protected float $magicalDamages = 9,
     ) {
@@ -32,6 +33,11 @@ abstract class Character
         if ($this->defense > 100) return 1;
 
         return $this->defense / 100;
+    }
+
+
+    public function getElement(){
+        return $this->element;
     }
 
     public function attack(Character $character): void

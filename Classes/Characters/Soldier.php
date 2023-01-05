@@ -8,7 +8,7 @@ class Soldier extends PhysicalCharacter
 {
     public function __construct()
     {
-        parent::__construct(health: 32, defense: 60, physicalDamages: 8, magicalDamages: 0);
+        parent::__construct(health: 32, defense: 60, element: "none", physicalDamages: 8, magicalDamages: 0);
     }
 
     public function getPhysicalDamages(): float
