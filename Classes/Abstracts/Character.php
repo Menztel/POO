@@ -5,9 +5,9 @@ namespace App\Classes\Abstracts;
 abstract class Character
 {
     public function __construct(
+        private string $element = "none",
         private float $health = 29,
         private float $defense = 60,
-        private string $element,
         protected float $physicalDamages = 9,
         protected float $magicalDamages = 9,
     ) {
@@ -40,11 +40,22 @@ abstract class Character
         return $this->element;
     }
 
-    public function attack(Character $character): void
-    {
-        echo "{$this} attaque ".lcfirst($character).($this->weapon ? " avec ".lcfirst($this->weapon->getName()) : " à mains nues").PHP_EOL;
-        $character->takesDamages($this->getPhysicalDamages(), $this->getMagicalDamages());
+    public function SetRandomElement(){
+        $elements = [Element::WATER, Element::FIRE, Element::PLANT];
+        $randomElement = $elements[array_rand($elements)];
+        return $this->element = $randomElement;
     }
+
+    public function attack(Character $character): void
+  {
+    $elementalMultiplier = Element::beats($this->element, $character->element) ? 1.5 : 0.5;
+    $physicalDamages = $this->getPhysicalDamages() * $elementalMultiplier;
+    $magicalDamages = $this->getMagicalDamages() * $elementalMultiplier;
+    
+    echo "{$this} attaque ".lcfirst($character).($this->weapon ? " avec ".lcfirst($this->weapon->getName()) : " à mains nues").PHP_EOL;
+    
+    $character->takesDamages($physicalDamages, $magicalDamages);
+  }
 
     public function takesDamages(float $physicalDamages, float $magicalDamages): void
     {

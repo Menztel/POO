@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Classes\Abstracts;
+
 abstract class Element {
     const WATER = "water";
     const FIRE = "fire";

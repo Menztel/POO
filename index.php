@@ -7,6 +7,7 @@ use App\Classes\Characters\Wizard;
 use App\Classes\Weapons\Cutlass;
 use App\Classes\Weapons\RodOfAges;
 use App\Classes\Spells\Spell;
+use App\Classes\Abstracts\Element;
 
 require_once('./autoload.php');
 require_once('./functions.php');
@@ -15,7 +16,7 @@ $waterbolt = new Spell("Eclair d'eau", "Inflige des dégâts d'eau à un ennemi"
 
 
 
-/*$winners = [
+$winners = [
     Thief::class => 0,
     Wizard::class => 0,
     Soldier::class => 0,
@@ -28,6 +29,16 @@ $waterbolt = new Spell("Eclair d'eau", "Inflige des dégâts d'eau à un ennemi"
     $wizard->takesWeapon(new RodOfAges());
     $soldier = new Soldier();
 
+    
+    $thief->SetRandomElement();
+    $wizard->SetRandomElement();
+    $soldier->SetRandomElement();
+
+
+    echo $thief->getElement();
+    echo $wizard->getElement();
+    echo $soldier->getElement();
+    
     $characters = [$thief, $wizard, $soldier];
     $attackees = $characters;
     
@@ -75,4 +86,3 @@ $waterbolt = new Spell("Eclair d'eau", "Inflige des dégâts d'eau à un ennemi"
 //var_dump(array_map(fn (int $wins) => ($wins / GAME_NUMBER * 100)."%", $winners));
 
 echo "Le gagnant est ".lcfirst($winner). " en {$round} round(s)".PHP_EOL;
-*/
