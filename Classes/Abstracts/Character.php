@@ -54,6 +54,14 @@ abstract class Character
     
     echo "{$this} attaque ".lcfirst($character).($this->weapon ? " avec ".lcfirst($this->weapon->getName()) : " à mains nues").PHP_EOL;
     
+    if($elementalMultiplier > 1){
+        echo "{$this} attaque avec l'élément " . $this->element . " et augmente de 50% son attaque".PHP_EOL; 
+    }
+
+    if($elementalMultiplier < 1){
+        echo "{$this} attaque avec l'élément " . $this->element . " ce qui diminue son attaque de 50%".PHP_EOL; 
+    }
+    
     $character->takesDamages($physicalDamages, $magicalDamages);
   }
 
